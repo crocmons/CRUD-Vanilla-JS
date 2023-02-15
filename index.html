@@ -17,30 +17,75 @@
          <div class="main row justify-content-center">
              <form action="" id="student-form" class="row justify-content-center mb-4" autocomplete="off">
               <div class="col-8 mb-3">
-                <label for="firstName">First Name</label>
+                <label for="fullName">Full Name</label>
                 <input 
                 type="text"
                 class="form-control"
-                id="firstName"
-                placeholder="Enter your First Name"
+                id="fullName"
+                placeholder="Enter your Full Name"
                 />
               </div>
               <div class="col-8 mb-3">
-                <label for="lastName">Last Name</label>
+                <label for="email">Email</label>
                 <input 
-                type="text"
+                type="email"
                 class="form-control"
-                id="lastName"
-                placeholder="Enter your Last Name"
+                id="email"
+                placeholder="Enter your Email"
                 />
               </div>
               <div class="col-8 mb-3">
-                <label for="firstName">ID Number</label>
+                <label for="birth">Date of Birth</label>
+                <input 
+                type="date"
+                class="form-control"
+                id="birth"
+                placeholder="Enter your Date of Birth"
+                />
+              </div>
+              <div class="col-8 mb-3">
+                <label for="gender">Gender</label>
                 <input 
                 type="text"
                 class="form-control"
-                id="idNumber"
-                placeholder="Enter your Roll ID"
+                id="gender"
+                placeholder="Enter your Gender"
+                />
+              </div>
+              <div class="col-8 mb-3">
+                <label for="hobby">Hobby</label>
+                <input 
+                type="text"
+                class="form-control"
+                id="hobby"
+                placeholder="Enter your Hobby"
+                />
+              </div>
+              <div class="col-8 mb-3">
+                <label for="country">Country</label>
+                <input 
+                type="text"
+                class="form-control"
+                id="country"
+                placeholder="Enter your Country"
+                />
+              </div>
+              <div class="col-8 mb-3">
+                <label for="state">State</label>
+                <input 
+                type="text"
+                class="form-control"
+                id="state"
+                placeholder="Enter your State"
+                />
+              </div>
+              <div class="col-8 mb-3">
+                <label for="city">City</label>
+                <input 
+                type="text"
+                class="form-control"
+                id="city"
+                placeholder="Enter your City"
                 />
               </div>
               <div class="col-8 mb-3">
@@ -48,21 +93,31 @@
               </div>
              </form>
 
-             <div class="col-10 col-sm-8 mt-5">
+             <div class="col-12 col-md-12 mt-7">
                  <table class="table table-striped table-dark text-light">
                     <thead>
                         <tr>
-                            <th>First Name</th>
-                            <th>Last Name</th>
-                            <th>ID Number</th>
+                            <th>Full Name</th>
+                            <th>Email</th>
+                            <th>Date of Birth</th>
+                            <th>Gender</th>
+                            <th>Hobby</th>
+                            <th>Country</th>
+                            <th>State</th>
+                            <th>City</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody class="student-list">
                        <tr>
                            <td>Alin</td>
-                           <td>Rosy</td>
-                           <td>10</td>
+                           <td>Rosy45@yahoo.com</td>
+                           <td>10/07/2003</td>
+                           <td>Female</td>
+                           <td>Badminton</td>
+                           <td>Brazil</td>
+                           <td>Ontawee</td>
+                           <td>phorchosry</td>
                            <td>
                             <a href="#" class="btn btn-primary btn-sm m-1 edit">Edit</a>
                             <a href="#" class="btn btn-danger btn-sm m-1 delete">Delete</a>

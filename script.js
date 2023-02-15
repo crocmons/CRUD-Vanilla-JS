@@ -15,9 +15,14 @@ const showAlerts =(msg,className)=>{
 
 // clear fields
 const clearFields =()=>{
-    document.querySelector("#firstName").value = "";
-    document.querySelector("#lastName").value = "";
-    document.querySelector("#idNumber").value = "" ;
+    document.querySelector("#fullName").value = "";
+    document.querySelector("#email").value = "";
+    document.querySelector("#birth").value = "" ;
+    document.querySelector("#gender").value = "" ;
+    document.querySelector("#hobby").value = "" ;
+    document.querySelector("#country").value = "" ;
+    document.querySelector("#state").value = "" ;
+    document.querySelector("#city").value = "" ;
 }
 
 // Add data on the table
@@ -25,21 +30,31 @@ document.querySelector("#student-form").addEventListener("submit",(e)=>{
     e.preventDefault();
 
 //    get form values first
-    const firstName = document.querySelector("#firstName").value;
-    const lastName = document.querySelector("#lastName").value;
-    const idNumber = document.querySelector("#idNumber").value;
+  const fullName = document.querySelector("#fullName").value;
+  const email = document.querySelector("#email").value;
+  const birth = document.querySelector("#birth").value ;
+  const gender = document.querySelector("#gender").value ;
+  const hobby = document.querySelector("#hobby").value ;
+  const country = document.querySelector("#country").value ;
+  const state = document.querySelector("#state").value ;
+  const city = document.querySelector("#city").value ;
 
     // form values Validate
-    if( firstName == "" || lastName == "" || idNumber == ""){
+    if( fullName == "" || email == "" || birth == "" || gender == "" || hobby == "" || country == "" || state == "" || city == ""){
        showAlerts("Please fill out the form first!", "warning");
     }else{
         if(row === null){
             const list = document.querySelector(".student-list");
             const showRow = document.createElement("tr");
             showRow.innerHTML = `
-               <td>${firstName}</td>
-               <td>${lastName}</td>
-               <td>${idNumber}</td>
+               <td>${fullName}</td>
+               <td>${email}</td>
+               <td>${birth}</td>
+               <td>${gender}</td>
+               <td>${hobby}</td>
+               <td>${country}</td>
+               <td>${state}</td>
+               <td>${city}</td>
                <td>
                <a href="#" class="btn btn-primary btn-sm m-1 edit">Edit</a>
                <a href="#" class="btn btn-danger btn-sm m-1 delete">Delete</a>
@@ -49,9 +64,14 @@ document.querySelector("#student-form").addEventListener("submit",(e)=>{
             row = null;
             showAlerts("Successfully, Student Added!", "success");
         }else{
-           row.children[0].textContent = firstName;
-           row.children[1].textContent = lastName;
-           row.children[2].textContent = idNumber;
+           row.children[0].textContent = fullName;
+           row.children[1].textContent = email;
+           row.children[2].textContent = birth;
+           row.children[3].textContent = gender;
+           row.children[4].textContent = hobby;
+           row.children[5].textContent = country;
+           row.children[6].textContent = state;
+           row.children[7].textContent = city;
            row = null;
            showAlerts("Students Info Edited", "primary")
         }
@@ -66,12 +86,16 @@ document.querySelector(".student-list").addEventListener("click",(e)=>{
     target = e.target;
     if(target.classList.contains("edit")){
         row = target.parentElement.parentElement;
-        
-        document.querySelector("#firstName").value = row.children[0].textContent;
-        
-        document.querySelector("#lastName").value = row.children[1].textContent;
-        
-        document.querySelector("#idNumber").value = row.children[2].textContent;
+
+
+        document.querySelector("#fullName").value = row.children[0].textContent ;
+        document.querySelector("#email").value = row.children[1].textContent ;
+        document.querySelector("#birth").value  = row.children[2].textContent ;
+        document.querySelector("#gender").value  = row.children[3].textContent ;
+        document.querySelector("#hobby").value  = row.children[4].textContent ;
+        document.querySelector("#country").value  = row.children[5].textContent ;
+        document.querySelector("#state").value  = row.children[6].textContent ;
+        document.querySelector("#city").value  = row.children[7].textContent ;
     }
 });
 
