@@ -13,6 +13,9 @@ const showAlerts =(msg,className)=>{
 
 }
 
+
+
+
 // clear fields
 const clearFields =()=>{
     document.querySelector("#fullName").value = "";
@@ -108,3 +111,113 @@ document.querySelector(".student-list").addEventListener("click",(e)=>{
         showAlerts("Student Removed!","danger")
     }
 });
+
+    // dropdown filter
+    
+    const getUniqueValuesfromColumn = ()=>{
+       let uniqueColDict = {}
+      allFilters = document.querySelectorAll(".table-filter")
+      allFilters.forEach(filterIndex => {
+          col_index = filterIndex.parentElement.getAttribute("col-index");
+        //   alert(col_index)
+         const rowsCol = document.querySelectorAll(" #tableFilter > tbody > tr ")
+        rowsCol.forEach((rows)=>{
+          cell_value = rows.querySelector("td:nth-child("+col_index+")").innerHTML;
+          
+          if(col_index in uniqueColDict){
+            
+            if(uniqueColDict[col_index].includes(cell_value)){
+                // alert(cell_value + "is Already present in the array!" + uniqueColDict[col_index])
+            }else{
+              uniqueColDict[col_index].push(cell_value)
+            //   alert("After adding the cell value :" + uniqueColDict[col_index])
+            }
+    
+    
+    
+          }else{
+            uniqueColDict[col_index] = new Array(cell_value)
+          }
+    
+    
+        })
+      });
+    
+      for ( i in uniqueColDict) {
+        // alert(`column index: ${i} has unique values: /n ${uniqueColDict[i]}`)
+      }
+    
+      updateSelectedOptions(uniqueColDict);
+    
+    };
+    
+    const updateSelectedOptions =(uniqueColDict)=>{
+        allFilters = document.querySelectorAll(".table-filter")
+        allFilters.forEach(filterIndex => {
+            col_index = filterIndex.parentElement.getAttribute("col-index");
+            uniqueColDict[col_index].forEach((i)=>{
+                filterIndex.innerHTML = filterIndex.innerHTML += `/n<option value=${i}>${i}</option>`
+            })
+        })
+    
+    };
+    
+    window.onload = ()=>{
+       console.log(document.querySelector("#tableFilter > tbody > tr:nth-child(1) > td:nth-child(7)").innerHTML)
+       getUniqueValuesfromColumn();
+    };
+    
+    // create filter_rows function
+    
+    // filterValue_dict ={6:Value selected,7:value,8:value}
+    
+    function filterRows (){
+        allFilters = document.querySelectorAll(".table-filter")
+        let filterValue_dict ={};
+    
+        allFilters.forEach((filterIndex)=>{
+           col_index = filterIndex.parentElement.getAttribute("col-index")
+    
+           value = filterIndex.value
+           
+           if(value !== "all"){
+               filterValue_dict[col_index] = value; 
+           }
+        });
+    
+        var colCellValueDict = {};
+        const rowsValue = document.querySelectorAll("#tableFilter tbody tr");
+        rowsValue.forEach((row)=>{
+            var displayRow = true;
+            allFilters.forEach((filterIndex)=>{
+                col_index = filterIndex.parentElement.getAttribute("col-index")
+
+                colCellValueDict[col_index] = row.querySelector("td:nth-child(" + col_index+ ")").innerHTML
+            })
+    
+            for (var col_i in filterValue_dict) {
+                filter_value = filterValue_dict[col_i]
+                rowCell_value = colCellValueDict[col_i]
+    
+                if(rowCell_value.indexOf(filter_value) == -1 && filter_value !== "all"){
+                    displayRow = false;
+                    break;
+                }
+            }
+    
+            if(displayRow === true){
+                row.style.display = ""
+            }else{
+                row.style.display = "none"
+            }
+        })
+    
+    
+    }
+    
+    
+    
+    
+    
+    
+    // {6:[], 7:[], 8:[]}
